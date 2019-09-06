@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MtgOrganizer.DataAccess;
+using System.Xml.Linq;
 
 namespace MtgOrganizer.Models
 {
@@ -69,6 +69,9 @@ namespace MtgOrganizer.Models
 
         #region Constructors
 
+        /// <summary>
+        /// The default constructor.
+        /// </summary>
         public Deck()
         {
             Cards = new List<Card>();
@@ -79,6 +82,10 @@ namespace MtgOrganizer.Models
 
         #region General Methods
 
+        /// <summary>
+        /// Make a copy of the Deck object.
+        /// </summary>
+        /// <returns>A copy of the cloned Deck object.</returns>
         public Deck Clone()
         {
             Deck deck = new Deck();
@@ -91,19 +98,21 @@ namespace MtgOrganizer.Models
 
             deck.ColorIdentity = this.ColorIdentity;
 
+            // TODO
+
 
 
             return deck;
         }
 
-        public void Load()
+        /// <summary>
+        /// Convert the object to an XML document.
+        /// </summary>
+        /// <returns>An XML document representation of the object.</returns>
+        public XDocument Serialize()
         {
-
-        }
-
-        public void Update(XMLDAL dal)
-        {
-
+            // TODO
+            return new XDocument();
         }
 
         #endregion

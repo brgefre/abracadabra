@@ -79,7 +79,8 @@
                                                 <Border Height="50">
                                                     <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                                                         <TextBlock Text="{Binding Path=Name}" />
-                                                        <Label FontStyle="Italic" FontSize="10" Content="{Binding Path=DeckCount}" />
+                                                        <Label FontStyle="Italic" FontSize="10" 
+                                                               Content="{Binding Path=DeckCount, Converter={StaticResource DeckCountToDescription}}" />
                                                     </StackPanel>
                                                 </Border>
                                             </DataTemplate>

@@ -2,9 +2,11 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:MtgOrganizer"
+             xmlns:r="clr-namespace:MtgOrganizer.Resources"
              StartupUri="MainWindow.xaml"
              Startup="App_Startup">
     <Application.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibility" />
+        <r:DeckCountToDescriptionConverter x:Key="DeckCountToDescription" />
     </Application.Resources>
 </Application>

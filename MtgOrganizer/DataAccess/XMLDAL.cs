@@ -23,22 +23,14 @@ namespace MtgOrganizer.DataAccess
 
         public void CreateDeckList(DeckList list)
         {
-            XDocument document = new XDocument(
-                new XElement("decklist",
-                    new XElement("name", list.Name)
-                )
-            );
-
             string fileName = GetNextFilePath("decklist-");
-            document.Save(fileName);
+            list.Serialize().Save(fileName);
         }
 
         public void CreateDeck(Deck deck)
         {
-
-
-
-
+            string fileName = GetNextFilePath("deck-");
+            deck.Serialize().Save(fileName);
         }
 
         private string GetNextFilePath(string fileNamePrefix)
@@ -125,32 +117,13 @@ namespace MtgOrganizer.DataAccess
 
         public void UpdateDeckList(DeckList list)
         {
-            // Create an array for the deck elements
-            object[] decks = new object[list.Decks.Count()];
-
-            for (int i = 0; i < list.Decks.Count(); i++)
-            {
-                decks[i] = new XElement("deck", new XElement("filename", list.Decks[i].FilePath));
-            }
-
-            // Create the document object
-            XDocument document = new XDocument(
-                new XElement("decklist", 
-                    new XElement("name", list.Name), decks
-                )
-            );
-
-            // Save to the XML file
-            document.Save(list.FilePath);
+            list.Serialize().Save(list.FilePath);
         }
 
-
-
-
-
-
-
-
+        public void UpdateDeck(Deck deck)
+        {
+            deck.Serialize().Save(deck.FilePath);
+        }
 
         #endregion
 

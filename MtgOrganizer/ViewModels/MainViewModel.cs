@@ -139,7 +139,8 @@ namespace MtgOrganizer.ViewModels
 
         private void UpdateDeckList(object parameter)
         {
-            SelectedDeckList.Update(_dal);
+            _dal.UpdateDeckList(SelectedDeckList);
+            SelectedDeckList.HasUnsavedChanges = false;
             DeckLists[DeckListIndex] = SelectedDeckList.Clone();
             SortDeckLists();
         }

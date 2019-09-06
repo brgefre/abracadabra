@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MtgOrganizer.DataAccess;
+using System.Xml.Linq;
 
 namespace MtgOrganizer.Models
 {
@@ -75,10 +76,24 @@ namespace MtgOrganizer.Models
             return list;
         }
 
-        public void Update(XMLDAL dal)
+        public XDocument Serialize()
         {
-            dal.UpdateDeckList(this);
-            HasUnsavedChanges = false;
+            // Create an array for the deck elements
+            object[] decks = new object[this.Decks.Count()];
+
+            for (int i = 0; i < this.Decks.Count(); i++)
+            {
+                decks[i] = new XElement("deck", new XElement("filename", this.Decks[i].FilePath));
+            }
+
+            // Create the document object
+            XDocument document = new XDocument(
+                new XElement("decklist",
+                    new XElement("name", this.Name), decks
+                )
+            );
+
+            return document;
         }
 
         #endregion
