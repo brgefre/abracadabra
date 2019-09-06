@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="XMLSchema1"
+    targetNamespace="http://tempuri.org/XMLSchema1.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/XMLSchema1.xsd"
+    xmlns:mstns="http://tempuri.org/XMLSchema1.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="deck">
+    <xs:complexType>
+      <xs:sequence>
+        <!-- General deck properties -->
+        <xs:element name="displayname" type="xs:string"/>
+        <xs:element name="format" type="xs:string"/>
+        <xs:element name="description" type="xs:string"/>
+        <xs:element name="coloridentity" type="xs:string"/>
+        <xs:element name="defaultgroupingtype" type="xs:string"/>
+        <!-- Commander(s), oathbreaker(s), and/or signature spell(s) -->
+        <xs:element name="primarycard1" type="xs:string" minOccurs="0"/>
+        <xs:element name="primarycard2" type="xs:string" minOccurs="0"/>
+        <xs:element name="secondarycard1" type="xs:string" minOccurs="0"/>
+        <xs:element name="secondarycard2" type="xs:string" minOccurs="0"/>
+        <!-- Arbitrary number of cards -->
+        <xs:element name="card" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="quantity" type="xs:integer"/>
+              <xs:element name="name" type="xs:string"/>
+              <xs:element name="cost" type="xs:string"/>
+              <xs:element name="cmc" type="xs:string"/>
+              <xs:element name="coloridentity" type="xs:string"/>
+              <xs:element name="type" type="xs:string"/>
+              <xs:element name="subtype" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+              <xs:element name="text" type="xs:string"/>
+              <xs:element name="imagepath" type="xs:string"/>
+              <xs:element name="customgrouping" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
